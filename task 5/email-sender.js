@@ -1,29 +1,28 @@
-const nodemailer = require("nodemailer");
+// email-sender.js
+const nodemailer = require('nodemailer');
 
-// Create a transporter object using your SMTP configuration
-
-//Log
+//un transporteur SMTP réutilisable en utilisant les informations d'authentification fournies par votre fournisseur de services de messagerie
 const transporter = nodemailer.createTransport({
-	service: "gmail", // e.g., 'gmail'
+	service: 'gmail',
 	auth: {
-		user: "dzqdsqdqfz@gmail.com", // your email address
-		pass: "zieifj1z78prthy", // your email password
-	},
+		user: 'sergepetcha@gmail.com',
+		pass: 'aa102030'
+	}
 });
 
-// Email message options
+// les options de l'e-mail
 const mailOptions = {
-	from: "dzqdsqdqfz@gmail.com", // sender's email address
-	to: "fahry657@gmail.com", // recipient's email address
-	subject: "Hello from Node.js", // email subject
-	text: "This is a test email sent from Node.js.", // email content (plain text)
+	from: 'sergepetcha@gmail.com',
+	to: 'sergepetcha@gmail.com',
+	subject: 'Test email',
+	text: 'Hello, this is a test email!'
 };
 
-// Send the email
+// Envoyer l'e-mail
 transporter.sendMail(mailOptions, (error, info) => {
 	if (error) {
-		console.error("Error sending email:", error);
+		console.log(error);
 	} else {
-		console.log("Email sent:", info.response);
+		console.log('Email sent: ' + info.response);
 	}
 });

@@ -1,13 +1,12 @@
-// Import the 'http' module
-const http = require("http");
+// server.js
+const http = require('http');
 
-// Create a server that listens on port 3000
 const server = http.createServer((req, res) => {
-	res.writeHead(200, { "Content-Type": "text/html" }); // Set the response header
-	res.end("<h1>Hello Node!!!!</h1>\n"); // Send the response
+	res.setHeader('Content-Type', 'text/html');
+	res.write('<h1>Hello Node!!!!</h1>\n');
+	res.end();
 });
 
-// Start the server and listen on port 3000
 server.listen(3000, () => {
-	console.log("Server is running on http://localhost:3000/");
+	console.log('Server is running on port 3000');
 });
